@@ -1,9 +1,17 @@
 package ourbusinessproject;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+@Entity
+@Table(name = "projects")
 public class Project {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @NotEmpty
+    @Column(nullable = false)
     private String title;
 
     private String description;
@@ -24,6 +32,14 @@ public class Project {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
