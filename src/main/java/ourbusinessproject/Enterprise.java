@@ -32,6 +32,13 @@ public class Enterprise {
 
     public Enterprise() {}
 
+    public Enterprise(String name, String description,  String contactName, String contactEmail) {
+        this.name = name;
+        this.description = description;
+        this.contactName = contactName;
+        this.contactEmail = contactEmail;
+    }
+
     /**
      * set the name
      * @param name the name
@@ -95,4 +102,6 @@ public class Enterprise {
     public String getContactEmail() {
         return contactEmail;
     }
+
+    public Long getId() {return id;}
 }

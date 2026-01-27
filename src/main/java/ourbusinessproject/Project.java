@@ -16,7 +16,12 @@ public class Project {
 
     private String description;
 
-    public Project() {};
+    public Project() {}
+
+    public Project(String title, String description) {
+        this.title = title;
+        this.description = title;
+    }
 
     /**
      * Set the title
@@ -36,10 +41,6 @@ public class Project {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**
