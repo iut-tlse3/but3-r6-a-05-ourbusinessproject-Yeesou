@@ -1,6 +1,7 @@
 package ourbusinessproject;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityResult;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,8 @@ public class EnterpriseProjectService {
         return entityManager;
     }
 
-    public Project newProject(String projectName, String description){
-        Project newProject = new Project(projectName, description);
+    public Project newProject(String projectName, String description, Enterprise enterprise) {
+        Project newProject = new Project(projectName, description, enterprise);
         entityManager.persist(newProject);
         entityManager.flush();
         return newProject;
