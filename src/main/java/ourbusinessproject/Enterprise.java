@@ -3,7 +3,12 @@ package ourbusinessproject;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.Cascade;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "enterprises")
@@ -14,21 +19,28 @@ public class Enterprise {
     private Long id;
 
     @NotEmpty
-    @Column(nullable = false)
     private String name;
 
     @Size(min = 10)
-    @Column(length = 1000)
     private String description;
 
     @NotEmpty
-    @Column(nullable = false)
     private String contactName;
 
     @NotEmpty
     @Email
-    @Column(nullable = false)
     private String contactEmail;
+
+    @OneToMany(mappedBy = "enterprises")
+    private List<Project> projects;
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void addProject(Project project) {
+        this.projects.add(project);
+    }
 
     public Enterprise() {}
 
@@ -37,6 +49,7 @@ public class Enterprise {
         this.description = description;
         this.contactName = contactName;
         this.contactEmail = contactEmail;
+        this.projects = new ArrayList<>();
     }
 
     /**

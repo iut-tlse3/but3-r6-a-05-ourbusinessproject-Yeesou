@@ -1,6 +1,11 @@
 package ourbusinessproject;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,14 +17,12 @@ public class Project {
     private Long id;
 
     @NotEmpty
-    @Column(nullable = false)
     private String title;
 
     private String description;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
 
     public Project() {}
@@ -28,6 +31,9 @@ public class Project {
         this.title = title;
         this.description = title;
         this.enterprise = enterprise;
+        if (enterprise != null) {
+            enterprise.addProject(this);
+        }
     }
 
     /**
