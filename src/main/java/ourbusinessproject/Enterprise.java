@@ -3,7 +3,10 @@ package ourbusinessproject;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "enterprises")
@@ -29,6 +32,14 @@ public class Enterprise {
     @Email
     @Column(nullable = false)
     private String contactEmail;
+
+    @OneToMany
+    @JoinColumn(name = "projects_id")
+    private List<Project> projects;
+
+    public List<Project> getProjects() {
+        return projects;
+    }
 
     public Enterprise() {}
 
