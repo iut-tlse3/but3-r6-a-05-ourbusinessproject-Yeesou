@@ -5,6 +5,8 @@ import jakarta.persistence.EntityResult;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EnterpriseProjectService {
 
@@ -31,6 +33,10 @@ public class EnterpriseProjectService {
         entityManager.persist(newEnterprise);
         entityManager.flush();
         return newEnterprise;
+    }
+
+    public List<Project> findAllProjects() {
+        return entityManager.createQuery("SELECT p from Project p ORDER BY p.title", Project.class).getResultList();
     }
 
     public Project findProjectById(Long projectId){
