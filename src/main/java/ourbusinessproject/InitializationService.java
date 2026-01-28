@@ -18,7 +18,7 @@ public class InitializationService {
     private Enterprise enterprise1;
     private Enterprise enterprise2;
 
-    @Transactional
+    @Transactional // si il y a une seul erreur dans la transaction tous les changements sont rollback. donc changer un titre en null et aucune entreprise et aucun projet n'est créer
     public void initProjects(){
         this.enterprise1 = enterpriseProjectService.newEnterprise("ent1", "pas de descriptions",
                 "ent1contact", "ent1@mail.com");
