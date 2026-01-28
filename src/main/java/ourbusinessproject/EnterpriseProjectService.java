@@ -1,11 +1,11 @@
 package ourbusinessproject;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityResult;
-import jakarta.persistence.PersistenceContext;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Service
 public class EnterpriseProjectService {

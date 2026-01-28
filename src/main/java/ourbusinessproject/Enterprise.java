@@ -31,7 +31,7 @@ public class Enterprise {
     @Email
     private String contactEmail;
 
-    @OneToMany
+    @OneToMany(mappedBy = "enterprise")
     private List<Project> projects;
 
     public List<Project> getProjects() {
